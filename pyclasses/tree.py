@@ -1,7 +1,7 @@
 class Branch:
     """A Branch of a Tree"""
     def __init__(self, **kwargs):
-        self.set(**kwargs)
+        self.setitems(**kwargs)
     def setitems(self, **kwargs):
         for name, item in kwargs.items():
             if name == "extend" or name == "setitems":
@@ -11,7 +11,13 @@ class Branch:
     def extend(self, name, **kwargs):
         setattr(self, name, Branch(**kwargs))
            
+def extend(cls, name, **kwargs):
+    setattr(cls, name, Branch(**kwargs))
 
 class Tree:
-    pass
+    def extend(self, name, **kwargs):
+        extend(self, name, **kwargs)
+
+
+
     
