@@ -2,4 +2,4 @@
 **/venv/
 **.breakpoints
 **/__pycache__/
-**/replit.nix
+**.nix
