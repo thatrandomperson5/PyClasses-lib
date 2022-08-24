@@ -1,4 +1,4 @@
-from pyclasses import Tree
+from pyclasses import Tree, decoratable
 
 
 class mytree(Tree):
@@ -19,3 +19,8 @@ class mytree(Tree):
 
 
 mytree()
+
+
+@decoratable
+class bar:
+    pass

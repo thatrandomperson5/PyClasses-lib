@@ -1,4 +1,4 @@
-from .tools import Decoratable
+from .decorate import Decoratable
 
 
 class Branch:
