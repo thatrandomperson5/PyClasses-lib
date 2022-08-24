@@ -4,7 +4,7 @@ class Branch:
         self.setitems(**kwargs)
     def setitems(self, **kwargs):
         for name, item in kwargs.items():
-            if name == "extend" or name == "setitems":
+            if name in ["setitems", "extend"]:
                 error = f"Name: {name} is reserved."
                 raise ValueError(error)
             setattr(self, name, item)
