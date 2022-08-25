@@ -1,6 +1,3 @@
-from .decorate import Decoratable
-
-
 class Branch:
     """A Branch of a Tree"""
 
@@ -22,6 +19,6 @@ def extend(cls, name, **kwargs):
     setattr(cls, name, Branch(**kwargs))
 
 
-class Tree(Decoratable):
+class Tree:
     def extend(self, name, **kwargs):
         extend(self, name, **kwargs)

@@ -1,8 +1,9 @@
-from pyclasses import Tree, Decoratable, class_decorator
+from pyclasses import Tree
 
 
 class mytree(Tree):
     def __init__(self):
+        super().__init__()
         print(self.__init__)
         print(self.test)
         self.test()
