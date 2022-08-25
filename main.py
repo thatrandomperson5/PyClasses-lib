@@ -22,17 +22,3 @@ class mytree(Tree):
 mytree()
 
 
-class bar(Decoratable):
-    @class_decorator
-    def _decor(self, func):
-        print(self, func)
-        return None
-
-    @_decor
-    def do():
-        print("hello world")
-
-
-b = bar()
-print(type(bar.do))
-bar.do()
