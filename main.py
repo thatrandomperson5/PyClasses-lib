@@ -1,4 +1,4 @@
-from pyclasses import Tree, decoratable
+from pyclasses import Tree, Decoratable, class_decorator
 
 
 class mytree(Tree):
@@ -21,6 +21,17 @@ class mytree(Tree):
 mytree()
 
 
-@decoratable
-class bar:
-    pass
+class bar(Decoratable):
+    @class_decorator
+    def _decor(self, func):
+        print(self, func)
+        return None
+
+    @_decor
+    def do():
+        print("hello world")
+
+
+b = bar()
+print(type(bar.do))
+bar.do()

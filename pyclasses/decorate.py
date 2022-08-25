@@ -22,33 +22,29 @@ class DecoratableClassMethod(ClassCallable):
 class Decoratable:
     """Set the subclased class and all sublacces of that class to be decoratable."""
 
-    def __init_subclass__(cls, **kwargs) -> None:
+    def __new__(cls, *args, **kwargs) -> None:
         for name, method in inspect.getmembers(cls):
 
-            if not name.startswith("__"):
+            if not name.startswith("_"):
                 if inspect.isfunction(method):
                     setattr(cls, name, DecoratableClassMethod(method, cls))
-
-
-def decoratable(cls):
-    """Set the decorated class to be decoratable."""
-    for name, method in inspect.getmembers(cls):
-
-        if not name.startswith("__"):
-            if inspect.isfunction(method):
-                setattr(cls, name, DecoratableClassMethod(method, cls))
-    return cls
+        cls = super().__new__(cls, *args, **kwargs)
+        return cls
 
 
 def class_decorator(func):
     def inner(func):
         a = False
         try:
-            return func(func.cls, func.method)
-        except:
+            out = func(func.cls, func.method)
+        except Exception:
             a = True
         if a:
             error = "Method is not a DecoratableClassMethod, make sure your decorator is inside a decoratable class."
             raise TypeError(error)
+        if out is None:
+            return func
+        else:
+            return out
 
     return inner
