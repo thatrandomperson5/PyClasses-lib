@@ -1,3 +1,6 @@
+from .flags import flag
+
+
 class Branch:
     """A Branch of a Tree"""
 
@@ -22,3 +25,10 @@ def extend(cls, name, **kwargs):
 class Tree:
     def extend(self, name, **kwargs):
         extend(self, name, **kwargs)
+
+    @classmethod
+    def extended_function(self, extention):
+        def Inner(func):
+            return func
+
+        return Inner

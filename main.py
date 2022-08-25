@@ -18,7 +18,9 @@ class mytree(Tree):
         print(self.y.z.a)
         print(self.y.z.b)
 
+    @Tree.extended_function("")
+    def idk(self):
+        pass
+
 
 mytree()
-
-
